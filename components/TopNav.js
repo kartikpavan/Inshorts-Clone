@@ -25,7 +25,7 @@ function TopNav({ index, setIndex }) {
       {index ? (
         <TouchableOpacity style={styles.rightIcon}>
           <Text>
-            <AntDesign name="reload1" size={24} color="#D8E9A8" />
+            <AntDesign name="reload1" size={20} color="#D8E9A8" />
           </Text>
         </TouchableOpacity>
       ) : (
@@ -60,7 +60,11 @@ const styles = StyleSheet.create({
     width: 80,
     alignItems: "flex-end",
   },
-  text: { color: "#D8E9A8", fontSize: 16, marginHorizontal: 0 },
+  text: {
+    color: "#D8E9A8",
+    fontSize: 16,
+    marginHorizontal: 0,
+  },
   textCenter: {
     color: "#d8d8d8",
     fontSize: 18,

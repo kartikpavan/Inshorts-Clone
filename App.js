@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
+import NewsContextProvider from "./api/context";
 import Tabs from "./components/Tabs";
 
-export default function App() {
+function App() {
   return (
     <View style={styles.container}>
       <Tabs />
@@ -16,3 +17,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#191A19",
   },
 });
+
+export default () => {
+  return (
+    <NewsContextProvider>
+      <App />
+    </NewsContextProvider>
+  );
+};
