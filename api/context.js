@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, createContext, useState, useEffect } from "react";
 import { BASE_URL, categories, getNewsAPI } from "./api";
 
@@ -10,14 +9,15 @@ const NewsContextProvider = ({ children }) => {
   const [index, setIndex] = useState(1);
 
   const fetchNews = async () => {
-    const { data } = axios.get(getNewsAPI(category));
-    setNews(data);
+    const response = await fetch(getNewsAPI(category));
+    const data = await response.json();
+    setNews(data.articles.slice(10, 20));
     setIndex(1); //* when changing category go back to NEWS SCREEN
   };
 
   useEffect(() => {
     fetchNews();
-  }, []);
+  }, [category]);
 
   return (
     <NewsContext.Provider

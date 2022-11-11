@@ -1,10 +1,27 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
+import { useGlobalContext } from "../api/context";
+import Carousel from "react-native-new-snap-carousel";
+import SingleNews from "../components/SingleNews";
 
-function NewsScreen(props) {
+function NewsScreen() {
+  const [activeIndex, setActiveIndex] = useState();
+  const { news } = useGlobalContext();
+  const windowHeight = Dimensions.get("window").height;
   return (
-    <View>
-      <Text style={styles.text}>News Screen </Text>
+    <View style={styles.carousel}>
+      <Carousel
+        layout={"tinder"}
+        layoutCardOffset={9}
+        data={news}
+        sliderWidth={300}
+        itemWidth={300}
+        vertical={true}
+        sliderHeight={300}
+        itemHeight={windowHeight}
+        renderItem={({ item, index }) => <SingleNews item={item} index={index} />}
+        onSnapToItem={(index) => setActiveIndex(index)}
+      />
     </View>
   );
 }
@@ -12,6 +29,10 @@ function NewsScreen(props) {
 const styles = StyleSheet.create({
   text: {
     color: "#d8d8d8",
+  },
+  carousel: {
+    flex: 1,
+    backgroundColor: "#e4e9d9",
   },
 });
 
