@@ -20,7 +20,7 @@ const SingleNews = ({ item, index }) => {
         justifyContent: "space-between",
         height: windowHeight - 70,
         width: windowWidth,
-        backgroundColor: "#e4e9d9",
+        backgroundColor: "#191A19",
       }}
     >
       <View>
@@ -28,11 +28,11 @@ const SingleNews = ({ item, index }) => {
           source={{ uri: item.urlToImage }}
           style={{ ...styles.mainImage, width: windowWidth }}
         />
-        <Text style={{ ...styles.title, color: "#191A19" }}>{item.title}</Text>
-        <Text style={{ ...styles.content, color: "#191A19" }}>{item.description} </Text>
-        <Text style={{ color: "#191A19", margin: 5 }}>
+        <Text style={{ ...styles.title, color: "#f6f2e8" }}>{item.title}</Text>
+        <Text style={{ ...styles.content, color: "#f6f2e8" }}>{item.description}</Text>
+        <Text style={{ color: "#f6f2e8", margin: 5 }}>
           Source:
-          <Text style={{ color: "#1E5128" }}> {item.author ?? "Unknown"}</Text>
+          <Text style={{ color: "#D8E9A8" }}> {item.author ?? "Unknown"}</Text>
         </Text>
       </View>
       <ImageBackground blurRadius={50} style={styles.footer} source={{ uri: item.urlToImage }}>

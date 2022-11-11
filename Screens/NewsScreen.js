@@ -11,7 +11,7 @@ function NewsScreen() {
   return (
     <View style={styles.carousel}>
       <Carousel
-        layout={"tinder"}
+        layout={"default"}
         layoutCardOffset={9}
         data={news}
         sliderWidth={300}
@@ -28,11 +28,11 @@ function NewsScreen() {
 
 const styles = StyleSheet.create({
   text: {
-    color: "#d8d8d8",
+    color: "#191A19",
   },
   carousel: {
     flex: 1,
-    backgroundColor: "#e4e9d9",
+    backgroundColor: "#191A19",
   },
 });
 
