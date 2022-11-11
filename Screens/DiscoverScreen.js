@@ -17,7 +17,6 @@ function DiscoverScreen(props) {
       <Carousel
         layout={"default"}
         data={categories}
-        sliderHeight={100}
         sliderWidth={windowWidth}
         itemWidth={customItemWidth}
         activeSlideAlignment={"start"}
@@ -30,22 +29,15 @@ function DiscoverScreen(props) {
         )}
       />
       <Text style={{ ...styles.titleText, color: "#f6f2e8" }}>Sources</Text>
-      <View
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          width: windowWidth,
-        }}
-      >
+      <View style={styles.sources}>
         {sources.map((item, index) => {
           return (
             <TouchableOpacity
               key={index}
               onPress={() => setSource(item.id)}
-              style={{ marginHorizontal: 10 }}
+              style={styles.sourceContainer}
             >
-              <Image source={{ uri: item.pic }} style={{ height: "50%", resizeMode: "contain" }} />
+              <Image source={{ uri: item.pic }} style={styles.sourceImage} />
               <Text style={{ color: "#f6f2e8" }}> {item.name.toUpperCase()} </Text>
             </TouchableOpacity>
           );
@@ -72,9 +64,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   categoryImage: {
-    height: "50%",
+    height: 150,
     width: "100%",
     resizeMode: "contain",
+  },
+  sourceImage: {
+    height: "100%",
+    borderRadius: 10,
+    resizeMode: "cover",
+  },
+  sources: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    paddingVertical: 15,
+  },
+  sourceContainer: {
+    height: 150,
+    width: "40%",
+    borderRadius: 15,
+    margin: 15,
   },
 });
 
