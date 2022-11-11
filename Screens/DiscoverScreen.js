@@ -4,6 +4,7 @@ import { categories, sources } from "../api/api";
 import { useGlobalContext } from "../api/context";
 import Carousel from "react-native-new-snap-carousel";
 import Search from "../components/Search";
+import CountryDropDown from "../components/CountryDropDown";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -15,6 +16,7 @@ function DiscoverScreen(props) {
   return (
     <View style={styles.discover}>
       <Search />
+      <CountryDropDown />
       <Text
         style={{
           ...styles.titleText,

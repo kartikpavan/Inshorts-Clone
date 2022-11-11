@@ -39,7 +39,6 @@ const SingleNews = ({ item, index }) => {
         <Text style={{ color: darkTheme ? "#f6f2e8" : "#191A19", margin: 5 }}>
           Source:
           <Text style={{ color: darkTheme ? "#D8E9A8" : "#1E5128" }}>
-            {" "}
             {item.author ?? "Unknown"}
           </Text>
         </Text>

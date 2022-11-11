@@ -7,14 +7,16 @@ const NewsContextProvider = ({ children }) => {
   const [news, setNews] = useState([]);
   const [category, setCategory] = useState("general");
   const [source, setSource] = useState();
+  const [country, setCountry] = useState("in");
   const [index, setIndex] = useState(1);
   const [darkTheme, setDarkTheme] = useState(true);
 
-  const fetchNews = async (reset = category) => {
-    const response = await fetch(getNewsAPI(reset));
+  const fetchNews = async (reset = category, country_code = country) => {
+    const response = await fetch(getNewsAPI(reset, country_code));
     const data = await response.json();
     setNews(data.articles);
     setIndex(1); //* when changing category go back to NEWS SCREEN
+    console.log(country_code);
   };
 
   const fetchNewsFromSource = async () => {
@@ -34,11 +36,22 @@ const NewsContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchNews();
-  }, [category]);
+  }, [category, country]);
 
   return (
     <NewsContext.Provider
-      value={{ index, setIndex, news, setCategory, fetchNews, setSource, setDarkTheme, darkTheme }}
+      value={{
+        index,
+        setIndex,
+        news,
+        setCategory,
+        fetchNews,
+        setSource,
+        setDarkTheme,
+        darkTheme,
+        setCountry,
+        country,
+      }}
     >
       {children}
     </NewsContext.Provider>

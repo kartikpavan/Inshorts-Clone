@@ -33,12 +33,12 @@ export const categories = [
 ];
 
 export const country = [
-  { code: "in", name: "India" },
-  { code: "us", name: "USA" },
-  { code: "au", name: "Australia" },
-  { code: "ru", name: "Russia" },
-  { code: "fr", name: "France" },
-  { code: "gb", name: "United Kingdom" },
+  { key: "in", value: "India" },
+  { key: "us", value: "USA" },
+  { key: "au", value: "Australia" },
+  { key: "ru", value: "Russia" },
+  { key: "fr", value: "France" },
+  { key: "gb", value: "United Kingdom" },
 ];
 
 export const sources = [
@@ -66,7 +66,7 @@ export const sources = [
 
 export const BASE_URL = "https://saurav.tech/NewsAPI/";
 
-export const getNewsAPI = (category, country_code = "in") => {
+export const getNewsAPI = (category, country_code) => {
   return `${BASE_URL}/top-headlines/category/${category}/${country_code}.json`;
 };
 
