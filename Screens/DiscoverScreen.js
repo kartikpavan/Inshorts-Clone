@@ -3,17 +3,27 @@ import { Text, View, StyleSheet, TouchableOpacity, Image, Dimensions } from "rea
 import { categories, sources } from "../api/api";
 import { useGlobalContext } from "../api/context";
 import Carousel from "react-native-new-snap-carousel";
+import Search from "../components/Search";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const customItemWidth = Math.round(windowWidth / 3);
 
 function DiscoverScreen(props) {
-  const { setCategory, setSource } = useGlobalContext();
+  const { setCategory, setSource, darkTheme } = useGlobalContext();
 
   return (
     <View style={styles.discover}>
-      <Text style={{ ...styles.titleText, color: "#f6f2e8" }}>Categories</Text>
+      <Search />
+      <Text
+        style={{
+          ...styles.titleText,
+          color: darkTheme ? "#f6f2e8" : "#191A19",
+          borderBottomColor: darkTheme ? "#D8E9A8" : "#4E9F3D",
+        }}
+      >
+        Categories
+      </Text>
       <Carousel
         layout={"default"}
         data={categories}
@@ -24,11 +34,22 @@ function DiscoverScreen(props) {
         renderItem={({ item, index }) => (
           <TouchableOpacity onPress={() => setCategory(item.name)} style={{ alignItems: "center" }}>
             <Image source={{ uri: item.pic }} style={styles.categoryImage} />
-            <Text style={{ ...styles.name, color: "#f6f2e8" }}> {item.name.toUpperCase()} </Text>
+            <Text style={{ ...styles.name, color: darkTheme ? "#f6f2e8" : "#191A19" }}>
+              {" "}
+              {item.name.toUpperCase()}{" "}
+            </Text>
           </TouchableOpacity>
         )}
       />
-      <Text style={{ ...styles.titleText, color: "#f6f2e8" }}>Sources</Text>
+      <Text
+        style={{
+          ...styles.titleText,
+          color: darkTheme ? "#f6f2e8" : "#191A19",
+          borderBottomColor: darkTheme ? "#D8E9A8" : "#4E9F3D",
+        }}
+      >
+        Sources
+      </Text>
       <View style={styles.sources}>
         {sources.map((item, index) => {
           return (
@@ -38,7 +59,6 @@ function DiscoverScreen(props) {
               style={styles.sourceContainer}
             >
               <Image source={{ uri: item.pic }} style={styles.sourceImage} />
-              <Text style={{ color: "#f6f2e8" }}> {item.name.toUpperCase()} </Text>
             </TouchableOpacity>
           );
         })}
@@ -61,7 +81,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderRadius: 10,
     alignSelf: "flex-start",
-    marginBottom: 10,
   },
   categoryImage: {
     height: 150,
@@ -77,10 +96,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    paddingVertical: 15,
+    paddingBottom: 15,
   },
   sourceContainer: {
-    height: 150,
+    height: 130,
     width: "40%",
     borderRadius: 15,
     margin: 15,

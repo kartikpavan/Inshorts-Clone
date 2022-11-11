@@ -9,18 +9,20 @@ import {
 } from "react-native";
 import React from "react";
 import * as Linking from "expo-linking";
+import { useGlobalContext } from "../api/context";
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
 const SingleNews = ({ item, index }) => {
+  const { darkTheme } = useGlobalContext();
   return (
     <View
       style={{
         justifyContent: "space-between",
         height: windowHeight - 70,
         width: windowWidth,
-        backgroundColor: "#191A19",
+        backgroundColor: darkTheme ? "#191A19" : "#D8E9A8",
       }}
     >
       <View>
@@ -28,11 +30,18 @@ const SingleNews = ({ item, index }) => {
           source={{ uri: item.urlToImage }}
           style={{ ...styles.mainImage, width: windowWidth }}
         />
-        <Text style={{ ...styles.title, color: "#f6f2e8" }}>{item.title}</Text>
-        <Text style={{ ...styles.content, color: "#f6f2e8" }}>{item.description}</Text>
-        <Text style={{ color: "#f6f2e8", margin: 5 }}>
+        <Text style={{ ...styles.title, color: darkTheme ? "#f6f2e8" : "#191A19" }}>
+          {item.title}
+        </Text>
+        <Text style={{ ...styles.content, color: darkTheme ? "#f6f2e8" : "#191A19" }}>
+          {item.description}
+        </Text>
+        <Text style={{ color: darkTheme ? "#f6f2e8" : "#191A19", margin: 5 }}>
           Source:
-          <Text style={{ color: "#D8E9A8" }}> {item.author ?? "Unknown"}</Text>
+          <Text style={{ color: darkTheme ? "#D8E9A8" : "#1E5128" }}>
+            {" "}
+            {item.author ?? "Unknown"}
+          </Text>
         </Text>
       </View>
       <ImageBackground blurRadius={50} style={styles.footer} source={{ uri: item.urlToImage }}>

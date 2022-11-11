@@ -6,10 +6,10 @@ import SingleNews from "../components/SingleNews";
 
 function NewsScreen() {
   const [activeIndex, setActiveIndex] = useState();
-  const { news } = useGlobalContext();
+  const { news, darkTheme } = useGlobalContext();
   const windowHeight = Dimensions.get("window").height;
   return (
-    <View style={styles.carousel}>
+    <View style={{ ...styles.carousel, backgroundColor: darkTheme ? "#191A19" : "#D8E9A8" }}>
       <Carousel
         layout={"default"}
         layoutCardOffset={9}
@@ -27,12 +27,8 @@ function NewsScreen() {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    color: "#191A19",
-  },
   carousel: {
     flex: 1,
-    backgroundColor: "#191A19",
   },
 });
 

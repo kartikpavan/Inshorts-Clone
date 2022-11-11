@@ -3,12 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useGlobalContext } from "../api/context";
 
 function TopNav({ index, setIndex }) {
+  const { fetchNews, setDarkTheme, darkTheme } = useGlobalContext();
   return (
     <View style={styles.container}>
       {index === 0 ? (
-        <TouchableOpacity style={styles.leftIcon}>
+        <TouchableOpacity style={styles.leftIcon} onPress={() => setDarkTheme((prev) => !prev)}>
           <Text style={styles.text}>
             <MaterialCommunityIcons name="theme-light-dark" size={24} color="#D8E9A8" />
           </Text>
@@ -23,7 +25,7 @@ function TopNav({ index, setIndex }) {
       )}
       <Text style={styles.textCenter}>{index ? "All News" : "Discover"} </Text>
       {index ? (
-        <TouchableOpacity style={styles.rightIcon}>
+        <TouchableOpacity style={styles.rightIcon} onPress={() => fetchNews("general")}>
           <Text>
             <AntDesign name="reload1" size={20} color="#D8E9A8" />
           </Text>
