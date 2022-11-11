@@ -1,2 +1,3 @@
-# Inshorts-Clone
-Color pallet : https://colorhunt.co/palette/191a191e51284e9f3dd8e9a8
+## NewsNest (React Native news App)
+
+![download](https://user-images.githubusercontent.com/81632171/201396120-e88d1371-bbef-4182-85b8-9bc4c0385f0f.png)
